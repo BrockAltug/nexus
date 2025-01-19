@@ -85,3 +85,32 @@ export const REMOVE_COMMENT = gql`
     }
   }
 `;
+
+// Mutation to add a new message
+export const ADD_MESSAGE = gql`
+  mutation addMessage($messageText: String!, $recipientId: ID!) {
+    addMessage(messageText: $messageText, recipientId: $recipientId) {
+      _id
+      messageText
+      sender {
+        _id
+        username
+      }
+      recipient {
+        _id
+        username
+      }
+      createdAt
+    }
+  }
+`;
+
+// Mutation to remove a message
+export const REMOVE_MESSAGE = gql`
+  mutation removeMessage($messageId: ID!) {
+    removeMessage(messageId: $messageId) {
+      _id
+      messageText
+    }
+  }
+`;
