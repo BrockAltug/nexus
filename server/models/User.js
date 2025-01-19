@@ -25,6 +25,12 @@ const userSchema = new Schema({
       ref: 'Post',
     },
   ],
+  messages: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Message',
+    },
+  ],
 });
 
 userSchema.pre('save', async function (next) {
@@ -43,4 +49,3 @@ userSchema.methods.isCorrectPassword = async function (password) {
 const User = model('User', userSchema);
 
 module.exports = User;
-
