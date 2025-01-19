@@ -1,7 +1,6 @@
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, useParams, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import PostForm from '../components/PostForm';
 import PostList from '../components/PostList';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
@@ -50,8 +49,68 @@ const Profile = () => {
           fontSize: '1.2rem',
         }}
       >
-        You need to be logged in to see this. Use the navigation links above to
-        sign up or log in!
+        You need to be logged in to see this.{' '}
+        <Link
+          to="/login"
+          style={{
+            color: '#C4B454', // Soft Gold for link color
+            textDecoration: 'none',
+            fontWeight: 'bold',
+          }}
+        >
+          Log in
+        </Link>{' '}
+        or{' '}
+        <Link
+          to="/signup"
+          style={{
+            color: '#C4B454', // Soft Gold for link color
+            textDecoration: 'none',
+            fontWeight: 'bold',
+          }}
+        >
+          Sign up
+        </Link>{' '}
+        to access this page.
+      </h4>
+    );
+  }
+
+  // Authentication check for messaging
+  if (!Auth.loggedIn()) {
+    return (
+      <h4
+        style={{
+          textAlign: 'center',
+          color: '#3D3D3D', // Dark Gray text
+          marginTop: '2rem',
+          fontWeight: 'bold',
+          fontSize: '1.2rem',
+        }}
+      >
+        You need to be logged in to view user profiles!{' '}
+        <Link
+          to="/login"
+          style={{
+            color: '#C4B454', // Soft Gold for link color
+            textDecoration: 'none',
+            fontWeight: 'bold',
+          }}
+        >
+          Log in
+        </Link>{' '}
+        or{' '}
+        <Link
+          to="/signup"
+          style={{
+            color: '#C4B454', // Soft Gold for link color
+            textDecoration: 'none',
+            fontWeight: 'bold',
+          }}
+        >
+          Sign up
+        </Link>{' '}
+        to continue.
       </h4>
     );
   }
@@ -86,6 +145,46 @@ const Profile = () => {
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
         </h2>
 
+        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+          <h3
+            style={{
+              color: '#3D3D3D', // Dark Gray text
+              fontSize: '1.5rem',
+              fontWeight: 'bold',
+            }}
+          >
+            {user.username}
+          </h3>
+        </div>
+
+        {userParam && (
+          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <Link
+              to={`/messages/${user._id}`}
+              style={{
+                backgroundColor: '#F5F5F0',
+                color: '#3D3D3D',
+                padding: '0.6rem 1.2rem',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                border: '1px solid #C4B454', // Soft Gold border
+                fontWeight: 'bold',
+                transition: 'background-color 0.3s, color 0.3s',
+              }}
+              onMouseOver={(e) => {
+                e.target.style.backgroundColor = '#3D3D3D'; // Dark Gray
+                e.target.style.color = '#F5F5F0'; // Ivory
+              }}
+              onMouseOut={(e) => {
+                e.target.style.backgroundColor = '#F5F5F0';
+                e.target.style.color = '#3D3D3D';
+              }}
+            >
+              Send Message
+            </Link>
+          </div>
+        )}
+
         <div
           style={{
             backgroundColor: '#ffffff', // White card background
@@ -103,20 +202,6 @@ const Profile = () => {
             showUsername={false}
           />
         </div>
-
-        {!userParam && (
-          <div
-            style={{
-              backgroundColor: '#ffffff', // White card background
-              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-              borderRadius: '16px',
-              padding: '2rem',
-              border: '1px solid #C4B454', // Soft Gold border
-            }}
-          >
-            <PostForm />
-          </div>
-        )}
       </div>
     </main>
   );
