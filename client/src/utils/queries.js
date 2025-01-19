@@ -12,6 +12,19 @@ export const QUERY_USER = gql`
         postText
         createdAt
       }
+      messages {
+        _id
+        messageText
+        sender {
+          _id
+          username
+        }
+        recipient {
+          _id
+          username
+        }
+        createdAt
+      }
     }
   }
 `;
@@ -23,6 +36,25 @@ export const QUERY_POSTS = gql`
       _id
       postText
       postAuthor
+      createdAt
+    }
+  }
+`;
+
+// Query to get all messages filtered by sender and recipient
+export const QUERY_MESSAGES = gql`
+  query getMessages($senderId: ID, $recipientId: ID) {
+    messages(senderId: $senderId, recipientId: $recipientId) {
+      _id
+      messageText
+      sender {
+        _id
+        username
+      }
+      recipient {
+        _id
+        username
+      }
       createdAt
     }
   }
@@ -46,6 +78,25 @@ export const QUERY_SINGLE_POST = gql`
   }
 `;
 
+// Query to get a single message by its ID
+export const QUERY_SINGLE_MESSAGE = gql`
+  query getSingleMessage($messageId: ID!) {
+    message(messageId: $messageId) {
+      _id
+      messageText
+      sender {
+        _id
+        username
+      }
+      recipient {
+        _id
+        username
+      }
+      createdAt
+    }
+  }
+`;
+
 // Query to get the logged-in user's data
 export const QUERY_ME = gql`
   query me {
@@ -57,6 +108,19 @@ export const QUERY_ME = gql`
         _id
         postText
         postAuthor
+        createdAt
+      }
+      messages {
+        _id
+        messageText
+        sender {
+          _id
+          username
+        }
+        recipient {
+          _id
+          username
+        }
         createdAt
       }
     }
