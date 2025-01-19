@@ -1,79 +1,206 @@
-import { useQuery } from '@apollo/client';
-import PostList from '../components/PostList';
-import PostForm from '../components/PostForm';
-import { QUERY_POSTS } from '../utils/queries';
+import { Link } from 'react-router-dom';
+import Auth from '../utils/auth';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_POSTS);
-  const posts = data?.posts || [];
+  if (Auth.loggedIn()) {
+    const username = Auth.getProfile().data.username;
+
+    return (
+      <main
+        style={{
+          padding: '2rem',
+          backgroundColor: '#F5F5F0', // Ivory background
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <div
+          style={{
+            textAlign: 'center',
+            maxWidth: '800px',
+            backgroundColor: '#FFFFFF', // White background for card
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            padding: '2rem',
+            borderRadius: '16px',
+            border: '1px solid #C4B454', // Soft Gold border
+          }}
+        >
+          <h1
+            style={{
+              fontSize: '2rem',
+              color: '#3D3D3D', // Dark Gray text
+              marginBottom: '1rem',
+              fontWeight: 'bold',
+            }}
+          >
+            Welcome back, {username}!
+          </h1>
+          <p
+            style={{
+              fontSize: '1.2rem',
+              color: '#708090', // Light Slate Gray for subtitle
+              marginBottom: '2rem',
+            }}
+          >
+            Discover what's new, connect with friends, and explore your world.
+          </p>
+          <div>
+            <Link
+              to="/posts"
+              style={{
+                display: 'inline-block',
+                backgroundColor: '#F5F5F0', // Ivory background for button
+                color: '#3D3D3D', // Dark Gray text
+                padding: '0.8rem 1.5rem',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                margin: '0 0.5rem',
+                fontSize: '1rem',
+                fontWeight: 'bold',
+                border: '1px solid #C4B454', // Soft Gold border
+                transition: 'background-color 0.3s, color 0.3s',
+              }}
+              onMouseOver={(e) => {
+                e.target.style.backgroundColor = '#3D3D3D'; // Dark Gray on hover
+                e.target.style.color = '#F5F5F0'; // Ivory text on hover
+              }}
+              onMouseOut={(e) => {
+                e.target.style.backgroundColor = '#F5F5F0';
+                e.target.style.color = '#3D3D3D';
+              }}
+            >
+              Explore Posts
+            </Link>
+            <Link
+              to="/me"
+              style={{
+                display: 'inline-block',
+                backgroundColor: '#F5F5F0', // Ivory background for button
+                color: '#3D3D3D', // Dark Gray text
+                padding: '0.8rem 1.5rem',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                margin: '0 0.5rem',
+                fontSize: '1rem',
+                fontWeight: 'bold',
+                border: '1px solid #C4B454', // Soft Gold border
+                transition: 'background-color 0.3s, color 0.3s',
+              }}
+              onMouseOver={(e) => {
+                e.target.style.backgroundColor = '#3D3D3D'; // Dark Gray on hover
+                e.target.style.color = '#F5F5F0'; // Ivory text on hover
+              }}
+              onMouseOut={(e) => {
+                e.target.style.backgroundColor = '#F5F5F0';
+                e.target.style.color = '#3D3D3D';
+              }}
+            >
+              View Profile
+            </Link>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main
       style={{
         padding: '2rem',
-        backgroundColor: '#F5F5F0', // Ivory background, consistent with Header
+        backgroundColor: '#F5F5F0', // Ivory background
         minHeight: '100vh',
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
       <div
-        className="container"
         style={{
-          maxWidth: '1000px',
-          margin: '0 auto',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'stretch',
-          gap: '2rem',
+          textAlign: 'center',
+          maxWidth: '800px',
+          backgroundColor: '#FFFFFF', // White background for card
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          padding: '2rem',
+          borderRadius: '16px',
+          border: '1px solid #C4B454', // Soft Gold border
         }}
       >
-        <div
-          className="post-form-container"
+        <h1
           style={{
-            width: '100%',
-            backgroundColor: '#ffffff', // Clean white card
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-            borderRadius: '16px',
-            padding: '2rem',
-            border: '1px solid #C4B454', // Soft Gold border
+            fontSize: '2rem',
+            color: '#3D3D3D', // Dark Gray text
+            marginBottom: '1rem',
+            fontWeight: 'bold',
           }}
         >
-          <PostForm />
-        </div>
-        <div
-          className="post-list-container"
+          Welcome to Nexus!
+        </h1>
+        <p
           style={{
-            width: '100%',
-            backgroundColor: '#ffffff', // Clean white card
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-            borderRadius: '16px',
-            padding: '2rem',
-            border: '1px solid #C4B454', // Soft Gold border
+            fontSize: '1.2rem',
+            color: '#708090', // Light Slate Gray for subtitle
+            marginBottom: '2rem',
           }}
         >
-          {loading ? (
-            <div
-              style={{
-                textAlign: 'center',
-                color: '#708090', // Light Slate Gray for text
-                fontSize: '1.1rem',
-                fontWeight: '500',
-              }}
-            >
-              Loading...
-            </div>
-          ) : (
-            <PostList
-              posts={posts}
-              title="Explore the Latest Posts"
-              style={{
-                color: '#3D3D3D', // Dark Gray for the title
-                fontWeight: '600',
-                fontSize: '1.5rem',
-              }}
-            />
-          )}
+          Connect, Share, and Explore – All in one place.
+        </p>
+        <div>
+          <Link
+            to="/signup"
+            style={{
+              display: 'inline-block',
+              backgroundColor: '#F5F5F0', // Ivory background for button
+              color: '#3D3D3D', // Dark Gray text
+              padding: '0.8rem 1.5rem',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              margin: '0 0.5rem',
+              fontSize: '1rem',
+              fontWeight: 'bold',
+              border: '1px solid #C4B454', // Soft Gold border
+              transition: 'background-color 0.3s, color 0.3s',
+            }}
+            onMouseOver={(e) => {
+              e.target.style.backgroundColor = '#3D3D3D'; // Dark Gray on hover
+              e.target.style.color = '#F5F5F0'; // Ivory text on hover
+            }}
+            onMouseOut={(e) => {
+              e.target.style.backgroundColor = '#F5F5F0';
+              e.target.style.color = '#3D3D3D';
+            }}
+          >
+            Sign Up
+          </Link>
+          <Link
+            to="/login"
+            style={{
+              display: 'inline-block',
+              backgroundColor: '#F5F5F0', // Ivory background for button
+              color: '#3D3D3D', // Dark Gray text
+              padding: '0.8rem 1.5rem',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              margin: '0 0.5rem',
+              fontSize: '1rem',
+              fontWeight: 'bold',
+              border: '1px solid #C4B454', // Soft Gold border
+              transition: 'background-color 0.3s, color 0.3s',
+            }}
+            onMouseOver={(e) => {
+              e.target.style.backgroundColor = '#3D3D3D'; // Dark Gray on hover
+              e.target.style.color = '#F5F5F0'; // Ivory text on hover
+            }}
+            onMouseOut={(e) => {
+              e.target.style.backgroundColor = '#F5F5F0';
+              e.target.style.color = '#3D3D3D';
+            }}
+          >
+            Log In
+          </Link>
         </div>
       </div>
     </main>

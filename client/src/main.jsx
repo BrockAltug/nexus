@@ -7,6 +7,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import SinglePost from './pages/SinglePost';
 import Profile from './pages/Profile';
+import Posts from './pages/Posts'; // Import the Posts component
 import ErrorPage from './pages/ErrorPage';
 
 const router = createBrowserRouter([
@@ -30,6 +31,9 @@ const router = createBrowserRouter([
       }, {
         path: '/me',
         element: <Profile />
+      }, {
+        path: '/posts',
+        element: <Posts /> // Add the Posts route
       }, {
         path: '/posts/:postId',
         element: <SinglePost />
