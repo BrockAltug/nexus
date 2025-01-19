@@ -86,7 +86,7 @@ const Header = () => {
                 {Auth.getProfile().data.username}'s profile
               </Link>
               <Link
-                to="/post"
+                to="/posts"
                 style={{
                   display: 'inline-block',
                   backgroundColor: '#F5F5F0',
@@ -109,33 +109,7 @@ const Header = () => {
                   e.target.style.color = '#3D3D3D';
                 }}
               >
-                Post
-              </Link>
-              <Link
-                to="/explore"
-                style={{
-                  display: 'inline-block',
-                  backgroundColor: '#F5F5F0',
-                  color: '#3D3D3D',
-                  padding: '0.6rem 1.2rem',
-                  borderRadius: '8px',
-                  textDecoration: 'none',
-                  margin: '0 0.5rem',
-                  fontSize: '1rem',
-                  fontWeight: 'bold',
-                  border: '1px solid #C4B454',
-                  transition: 'background-color 0.3s, color 0.3s',
-                }}
-                onMouseOver={(e) => {
-                  e.target.style.backgroundColor = '#3D3D3D';
-                  e.target.style.color = '#F5F5F0';
-                }}
-                onMouseOut={(e) => {
-                  e.target.style.backgroundColor = '#F5F5F0';
-                  e.target.style.color = '#3D3D3D';
-                }}
-              >
-                Explore
+                Posts
               </Link>
               <button
                 onClick={logout}
