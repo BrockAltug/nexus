@@ -8,6 +8,8 @@ import Login from './pages/Login';
 import SinglePost from './pages/SinglePost';
 import Profile from './pages/Profile';
 import Posts from './pages/Posts'; // Import the Posts component
+import Messages from './pages/Messages'; // Import the Messages component
+import SingleMessage from './pages/SingleMessage'; // Import the SingleMessage component
 import ErrorPage from './pages/ErrorPage';
 
 const router = createBrowserRouter([
@@ -37,6 +39,12 @@ const router = createBrowserRouter([
       }, {
         path: '/posts/:postId',
         element: <SinglePost />
+      }, {
+        path: '/messages',
+        element: <Messages /> // Add the Messages route
+      }, {
+        path: '/messages/:messageId',
+        element: <SingleMessage /> // Add the SingleMessage route
       }
     ]
   },
