@@ -5,6 +5,7 @@ const typeDefs = `
     email: String
     password: String
     posts: [Post]!
+    messages: [Message]!
   }
 
   type Post {
@@ -22,6 +23,14 @@ const typeDefs = `
     createdAt: String
   }
 
+  type Message {
+    _id: ID
+    messageText: String
+    sender: User
+    recipient: User
+    createdAt: String
+  }
+
   type Auth {
     token: ID!
     user: User
@@ -32,6 +41,8 @@ const typeDefs = `
     user(username: String!): User
     posts(username: String): [Post]
     post(postId: ID!): Post
+    messages(senderId: ID, recipientId: ID): [Message]
+    message(messageId: ID!): Message
     me: User
   }
 
@@ -42,6 +53,8 @@ const typeDefs = `
     addComment(postId: ID!, commentText: String!): Post
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
+    addMessage(messageText: String!, recipientId: ID!): Message
+    removeMessage(messageId: ID!): Message
   }
 `;
 

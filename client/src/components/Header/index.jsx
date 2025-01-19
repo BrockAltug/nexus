@@ -1,10 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 const Header = () => {
+  const navigate = useNavigate();
+
   const logout = (event) => {
     event.preventDefault();
+    navigate('/'); // Redirect to the home screen
     Auth.logout();
+    
   };
 
   return (
@@ -43,8 +47,8 @@ const Header = () => {
                 fontWeight: 'bold',
                 transition: 'color 0.3s ease', // Smooth transition for hover
               }}
-              onMouseOver={(e) => e.target.style.color = '#C4B454'} // Gold color on hover
-              onMouseOut={(e) => e.target.style.color = '#3D3D3D'} // Dark Gray text when not hovering
+              onMouseOver={(e) => (e.target.style.color = '#C4B454')} // Gold on hover
+              onMouseOut={(e) => (e.target.style.color = '#3D3D3D')} // Dark Gray text
             >
               Nexus
             </h1>
@@ -66,7 +70,7 @@ const Header = () => {
                 to="/me"
                 style={{
                   display: 'inline-block',
-                  backgroundColor: '#F5F5F0', // Ivory background for button
+                  backgroundColor: '#F5F5F0', // Ivory button
                   color: '#3D3D3D', // Dark Gray text
                   padding: '0.6rem 1.2rem',
                   borderRadius: '8px',
@@ -113,6 +117,32 @@ const Header = () => {
                 }}
               >
                 Posts
+              </Link>
+              <Link
+                to="/messages"
+                style={{
+                  display: 'inline-block',
+                  backgroundColor: '#F5F5F0',
+                  color: '#3D3D3D',
+                  padding: '0.6rem 1.2rem',
+                  borderRadius: '8px',
+                  textDecoration: 'none',
+                  margin: '0 0.5rem',
+                  fontSize: '1rem',
+                  fontWeight: 'bold',
+                  border: '1px solid #C4B454',
+                  transition: 'background-color 0.3s, color 0.3s',
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.backgroundColor = '#3D3D3D';
+                  e.target.style.color = '#F5F5F0';
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.backgroundColor = '#F5F5F0';
+                  e.target.style.color = '#3D3D3D';
+                }}
+              >
+                Messages
               </Link>
               <button
                 onClick={logout}
