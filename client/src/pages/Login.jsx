@@ -36,15 +36,20 @@ const Login = () => {
     });
   };
 
+  const backgroundImage = '/images/background.png'; // Path to the image in the public folder
+
   return (
     <main
       style={{
         padding: '2rem',
-        backgroundColor: '#F5F5F0', // Ivory background
+        backgroundColor: '#F5F5F0', // Ivory background as fallback
         minHeight: '100vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundImage: `url(${backgroundImage})`, // Add the background image
+        backgroundSize: 'cover', // Ensure the image covers the entire background
+        backgroundPosition: 'center', // Center the background image
       }}
     >
       <div

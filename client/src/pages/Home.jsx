@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import Auth from '../utils/auth';
 
 const Home = () => {
+  const backgroundImage = '/images/background.png'; // Path to the image in the public folder
+
   if (Auth.loggedIn()) {
     const username = Auth.getProfile().data.username;
 
@@ -9,12 +11,15 @@ const Home = () => {
       <main
         style={{
           padding: '2rem',
-          backgroundColor: '#F5F5F0', // Ivory background
+          backgroundColor: '#F5F5F0', // Ivory background as fallback
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
+          backgroundImage: `url(${backgroundImage})`, // Add the background image
+          backgroundSize: 'cover', // Ensure the image covers the entire background
+          backgroundPosition: 'center', // Center the background image
         }}
       >
         <div
@@ -110,12 +115,15 @@ const Home = () => {
     <main
       style={{
         padding: '2rem',
-        backgroundColor: '#F5F5F0', // Ivory background
+        backgroundColor: '#F5F5F0', // Ivory background as fallback
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundImage: `url(${backgroundImage})`, // Add the background image
+        backgroundSize: 'cover', // Ensure the image covers the entire background
+        backgroundPosition: 'center', // Center the background image
       }}
     >
       <div
