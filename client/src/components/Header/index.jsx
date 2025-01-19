@@ -41,7 +41,10 @@ const Header = () => {
                 margin: '0',
                 fontSize: '2.2rem',
                 fontWeight: 'bold',
+                transition: 'color 0.3s ease', // Smooth transition for hover
               }}
+              onMouseOver={(e) => e.target.style.color = '#C4B454'} // Gold color on hover
+              onMouseOut={(e) => e.target.style.color = '#3D3D3D'} // Dark Gray text when not hovering
             >
               Nexus
             </h1>
@@ -83,7 +86,7 @@ const Header = () => {
                   e.target.style.color = '#3D3D3D';
                 }}
               >
-                {Auth.getProfile().data.username}'s profile
+                Profile
               </Link>
               <Link
                 to="/posts"
