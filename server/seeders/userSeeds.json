@@ -1,52 +1,17 @@
 [
   {
-    "username": "Brian K.",
-    "email": "bkernighan@tech.com",
-    "password": "password01"
+    "username": "user1",
+    "email": "user1@example.com",
+    "password": "password123"
   },
   {
-    "username": "Max K.",
-    "email": "maxk@tech.com",
-    "password": "password02"
+    "username": "user2",
+    "email": "user2@example.com",
+    "password": "password123"
   },
   {
-    "username": "Lucky Stiff",
-    "email": "wtls@tech.com",
-    "password": "password03"
-  },
-  {
-    "username": "Kent B.",
-    "email": "kentb@tech.com",
-    "password": "password04"
-  },
-  {
-    "username": "Ed Berard",
-    "email": "evberard@tech.com",
-    "password": "password05"
-  },
-  {
-    "username": "Alan K.",
-    "email": "alan@tech.com",
-    "password": "password06"
-  },
-  {
-    "username": "C.A.R. H.",
-    "email": "choare@tech.com",
-    "password": "password07"
-  },
-  {
-    "username": "Dave T.",
-    "email": "dthomas@tech.com",
-    "password": "password08"
-  },
-  {
-    "username": "Don K.",
-    "email": "dknuth@tech.com",
-    "password": "password09"
-  },
-  {
-    "username": "Lernant.",
-    "email": "lernantino@tech.com",
-    "password": "password10"
+    "username": "user3",
+    "email": "user3@example.com",
+    "password": "password123"
   }
 ]

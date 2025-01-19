@@ -1,0 +1,27 @@
+[
+    {
+      "messageText": "Hi user2, how's it going?",
+      "sender": "user1",
+      "recipient": "user2"
+    },
+    {
+      "messageText": "Hey user1, I'm doing well. Thanks for asking!",
+      "sender": "user2",
+      "recipient": "user1"
+    },
+    {
+      "messageText": "Hello user3, great to see you here!",
+      "sender": "user1",
+      "recipient": "user3"
+    },
+    {
+      "messageText": "Thanks, user1! I'm glad to be here.",
+      "sender": "user3",
+      "recipient": "user1"
+    },
+    {
+      "messageText": "Hey user3, nice post!",
+      "sender": "user2",
+      "recipient": "user3"
+    }
+  ]
